@@ -1,7 +1,35 @@
-<section class="bg-mistyRose text-darkPurple h-screen flex flex-col items-center justify-center text-center">
-	<h1 class="text-5xl font-bold">Hi, I'm Joshua<h1>
-  <p class="text-2xl mt-4">A University of Michigan Computer Engineer</p>
-  <a href="#projects" class="mt-8 bg-darkPurple text-white px-6 py-3 rounded hover:bg-wisteria">
-    View My Work
-  </a>
+---
+import SmoothScroll from '../components/SmoothScroll.svelte';
+---
+<section
+  id="hero"
+  class="h-screen flex items-center justify-center px-4 relative overflow-hidden text-white bg-hero-gradient bg-[length:200%_200%] animate-gradient-x"
+>
+  <!-- Hero Content -->
+  <div class="text-center max-w-2xl relative z-10">
+    <h1 class="text-4xl sm:text-5xl font-bold">
+      Hi, I'm 
+      <span 
+        class="hover:text-[theme(colors.maize)] transition duration-300"
+      >
+        Joshua
+      </span>
+    </h1>
+    <p class="text-lg sm:text-xl mt-4">
+      A 
+      <span class="hover:text-[theme(colors.maize)] transition duration-300">
+        University
+      </span> 
+      of 
+      <span class="hover:text-[theme(colors.blue)] transition duration-300">
+        Michigan
+      </span>
+      Computer Engineer
+    </p>
+    <SmoothScroll targetId="#projects" client:load>
+      <button class="inline-block mt-6 bg-darkPurple text-white px-6 py-3 rounded hover:bg-wisteria transition">
+        View My Work
+      </button>
+    </SmoothScroll>
+  </div>
 </section>

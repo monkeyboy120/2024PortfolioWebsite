@@ -1,12 +1,40 @@
-<section id="about" class="bg-wisteria text-white py-16">
-  <div class="container mx-auto flex flex-col md:flex-row items-center space-y-8 md:space-y-0">
-    <div class="md:w-1/2">
-			<!-- TODO: Photo and about-->	
-      <img src="/your-photo.jpg" alt="Your Name" class="rounded-full w-64 mx-auto shadow-lg" />
+---
+import { Image } from 'astro:assets';
+import headshot from '../Headshot.jpeg';
+---
+
+<section id="about" class="bg-wisteria text-white py-16 px-4">
+  <div class="container mx-auto flex flex-col md:flex-row items-center md:space-x-8 space-y-8 md:space-y-0">
+    <!-- Left Column: Image -->
+    <div class="md:w-1/2 flex justify-center">
+      <Image
+        src={headshot}
+        alt="Joshua La Headshot"
+        class="rounded-full shadow-lg"
+        width={256}
+        height={256}
+        format="webp"
+        class="rounded-full shadow-lg"
+      />
     </div>
+
+    <!-- Right Column: Text -->
     <div class="md:w-1/2 text-center md:text-left">
-      <h2 class="text-4xl font-bold">About Me</h2>
-      <p class="mt-4">Write a brief introduction about yourself, your skills, and what you're passionate about.</p>
+      <h2 class="text-4xl font-bold mb-4">About Me</h2>
+      <p class="text-lg leading-relaxed">
+        I am a Computer Engineering student at the University of Michigan with a strong interest in robotics, software development, and algorithm optimization. 
+        I have experience with programming languages like C++, Python, and Rust, as well as UNIX systems. 
+        I am passionate about solving complex problems, building innovative solutions, and collaborating with others to create impactful projects.
+			</p>
+			<!-- Resume Link -->
+      <a
+        href="https://docs.google.com/document/d/1uoib-Yeq6i2jcxkd0EmQWirBQCJaIIhG/edit?usp=sharing&ouid=112550080756445450538&rtpof=true&sd=true"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block bg-darkPurple text-white px-6 py-3 rounded hover:bg-[#EAAA00] transition duration-300"
+      >
+        View My Resume
+      </a>
     </div>
   </div>
 </section>
