@@ -1,40 +1,67 @@
 ---
 import { Image } from 'astro:assets';
+import SectionReveal from './SectionReveal.svelte';
 import headshot from '../Headshot.jpeg';
 ---
 
-<section id="about" class="bg-wisteria text-white py-16 px-4">
-  <div class="container mx-auto flex flex-col md:flex-row items-center md:space-x-8 space-y-8 md:space-y-0">
-    <!-- Left Column: Image -->
-    <div class="md:w-1/2 flex justify-center">
-      <Image
-        src={headshot}
-        alt="Joshua La Headshot"
-        class="rounded-full shadow-lg"
-        width={256}
-        height={256}
-        format="webp"
-        class="rounded-full shadow-lg"
-      />
-    </div>
+<section id="about" class="section-space px-4 sm:px-6">
+  <div class="page-shell grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+    <SectionReveal client:load>
+      <div class="relative mx-auto max-w-md">
+        <div class="absolute inset-0 translate-x-4 translate-y-4 rounded-4xl bg-accentSoft"></div>
+        <div class="relative overflow-hidden rounded-4xl border border-line bg-surface p-4 shadow-panel">
+          <Image
+            src={headshot}
+            alt="Joshua La Headshot"
+            width={640}
+            height={640}
+            format="webp"
+            class="aspect-square w-full rounded-[1.5rem] object-cover"
+          />
+        </div>
+      </div>
+    </SectionReveal>
 
-    <!-- Right Column: Text -->
-    <div class="md:w-1/2 text-center md:text-left">
-      <h2 class="text-4xl font-bold mb-4">About Me</h2>
-      <p class="text-lg leading-relaxed">
-        I am a Computer Engineering student at the University of Michigan with a strong interest in robotics, software development, and algorithm optimization. 
-        I have experience with programming languages like C++, Python, and Rust, as well as UNIX systems. 
-        I am passionate about solving complex problems, building innovative solutions, and collaborating with others to create impactful projects.
-			</p>
-			<!-- Resume Link -->
-      <a
-        href="https://drive.google.com/file/d/1C1ppjHdzFFy09pEa7rkYLRxpAiIUdElc/view?usp=share_link"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-block bg-darkPurple text-white px-6 py-3 rounded hover:bg-[#EAAA00] transition duration-300"
-      >
-        View My Resume
-      </a>
-    </div>
+    <SectionReveal client:load>
+      <div>
+        <p class="eyebrow mb-4">About</p>
+        <h2 class="section-title">About me.</h2>
+        <p class="section-copy mt-6">
+          I study computer engineering at the University of Michigan and spend most of my time
+          around software, systems, and robotics.
+        </p>
+        <p class="section-copy mt-4">
+          I like low-level thinking, practical tools, and problems that get better through steady iteration.
+        </p>
+
+        <div class="mt-8 grid gap-4 sm:grid-cols-2">
+          <div class="rounded-3xl border border-line bg-surface p-5">
+            <p class="text-sm uppercase tracking-[0.18em] text-accentDeep">Focus Areas</p>
+            <ul class="mt-3 space-y-2 text-sm leading-7 text-muted">
+              <li>Robotics</li>
+              <li>Developer tools</li>
+              <li>Performance-minded systems</li>
+            </ul>
+          </div>
+          <div class="rounded-3xl border border-line bg-surface p-5">
+            <p class="text-sm uppercase tracking-[0.18em] text-accentDeep">Working With</p>
+            <ul class="mt-3 space-y-2 text-sm leading-7 text-muted">
+              <li>C++, Python, Rust</li>
+              <li>UNIX systems</li>
+              <li>Clean, from-scratch builds</li>
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href="https://drive.google.com/file/d/1C1ppjHdzFFy09pEa7rkYLRxpAiIUdElc/view?usp=share_link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-8 inline-flex items-center justify-center rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white transition hover:bg-midnight"
+        >
+          View Resume
+        </a>
+      </div>
+    </SectionReveal>
   </div>
 </section>

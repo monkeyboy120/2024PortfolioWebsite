@@ -2,9 +2,98 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Joshua La is a computer engineering student building thoughtful software and systems with an interest in robotics, developer tools, and performance."
+    />
     <title>Joshua La - Portfolio</title>
   </head>
-  <body class="bg-white text-darkPurple">
+  <body class="bg-canvas font-sans text-ink antialiased">
+    <div class="fixed inset-0 -z-20 bg-hero-glow"></div>
+    <div class="fixed inset-x-0 top-0 -z-10 h-[32rem] bg-[radial-gradient(circle_at_top,rgba(183,121,67,0.16),transparent_55%)]"></div>
     <slot />
   </body>
 </html>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: rgba(183, 121, 67, 0.25);
+    color: #1f2933;
+  }
+
+  .page-shell {
+    width: min(1120px, calc(100% - 2rem));
+    margin: 0 auto;
+  }
+
+  .section-space {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .eyebrow {
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #8c4e1f;
+  }
+
+  .section-title {
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    font-size: clamp(1.9rem, 4vw, 3.25rem);
+    line-height: 1.02;
+  }
+
+  .section-copy {
+    color: #5f6b76;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.7s ease,
+      transform 0.7s ease;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 640px) {
+    .page-shell {
+      width: min(100% - 1.25rem, 1120px);
+    }
+
+    .section-space {
+      padding-top: 3.5rem;
+      padding-bottom: 3.5rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      line-height: 1.05;
+    }
+
+    .section-copy {
+      font-size: 0.98rem;
+      line-height: 1.65;
+    }
+  }
+</style>

@@ -1,38 +1,72 @@
-<section id="projects" class="bg-white py-16 px-4 border-b border-gray-300">
-  <div class="container mx-auto text-center">
-    <h2 class="text-3xl sm:text-4xl font-bold mb-8">My Projects</h2>
-    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-      <!-- Project 1: Neovim Config -->
-      <div class="bg-wisteria text-white p-6 rounded shadow-lg">
-        <h3 class="text-xl font-semibold mb-4">Custom Neovim Config</h3>
-        <p class="text-base mb-4">
-          A custom and modular Neovim configuration tailored for efficient coding. Includes support for LSP, treesitter, and more.
-        </p>
-        <a
-          href="https://github.com/monkeyboy120/neovim"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-block bg-darkPurple text-white px-4 py-2 rounded hover:bg-[#EAAA00] transition duration-300"
-        >
-          View on GitHub
-        </a>
-      </div>
+---
+import SectionReveal from './SectionReveal.svelte';
 
-      <!-- Project 2: ZigMnist -->
-      <div class="bg-wisteria text-white p-6 rounded shadow-lg">
-        <h3 class="text-xl font-semibold mb-4">ZigMNIST</h3>
-        <p class="text-base mb-4">
-          A handwritten digit classifier implemented from scratch using the Zig programming language. Built to explore low-level programming techniques and machine learning fundamentals.
+const projects = [
+  {
+    name: 'Custom Neovim Config',
+    category: 'Developer Tooling',
+    description:
+      'A modular Neovim setup with LSP, Treesitter, and a workflow tuned for speed and clarity.',
+    tags: ['Lua', 'LSP', 'Editor UX'],
+    href: 'https://github.com/monkeyboy120/neovim',
+  },
+  {
+    name: 'ZigMNIST',
+    category: 'Systems + Machine Learning',
+    description:
+      'A handwritten digit classifier built in Zig to explore memory control and core machine learning mechanics.',
+    tags: ['Zig', 'ML Fundamentals', 'From Scratch'],
+    href: 'https://github.com/monkeyboy120/ZigMnist',
+  },
+];
+---
+
+<section id="projects" class="section-space px-4 sm:px-6">
+  <div class="page-shell">
+    <SectionReveal client:load>
+      <div class="mb-10 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div class="max-w-2xl">
+          <p class="eyebrow mb-4">Selected Work</p>
+          <h2 class="section-title text-ink">A few projects.</h2>
+        </div>
+        <p class="section-copy max-w-xl">
+          Projects that show how I think about tooling, systems, and building from scratch.
         </p>
-        <a
-          href="https://github.com/monkeyboy120/ZigMnist"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-block bg-darkPurple text-white px-4 py-2 rounded hover:bg-[#EAAA00] transition duration-300"
-        >
-          View on GitHub
-        </a>
       </div>
+    </SectionReveal>
+
+    <div class="grid gap-6 lg:grid-cols-2">
+      {projects.map((project) => (
+        <SectionReveal client:load>
+          <article class="group h-full rounded-4xl border border-line bg-surface p-6 shadow-panel transition duration-300 hover:-translate-y-1 hover:shadow-lift sm:p-8">
+            <div class="flex items-center justify-between gap-4">
+              <p class="text-sm uppercase tracking-[0.18em] text-accentDeep">{project.category}</p>
+              <span class="rounded-full bg-accentSoft px-3 py-1 text-xs font-semibold text-accentDeep">
+                Featured
+              </span>
+            </div>
+
+            <h3 class="mt-5 font-display text-2xl text-ink sm:text-3xl">{project.name}</h3>
+            <p class="mt-3 text-sm leading-6 text-muted sm:text-base sm:leading-7">{project.description}</p>
+
+            <div class="mt-5 flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span class="rounded-full border border-line px-3 py-1 text-sm text-muted">{tag}</span>
+              ))}
+            </div>
+
+            <a
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-accent transition group-hover:text-accentDeep"
+            >
+              View on GitHub
+              <span aria-hidden="true">→</span>
+            </a>
+          </article>
+        </SectionReveal>
+      ))}
     </div>
   </div>
 </section>
